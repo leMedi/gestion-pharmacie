@@ -11,7 +11,7 @@ require __DIR__. '/include/outils.php';
 ?>
 
 <div class="wrapper">
-    <div class="sidebar" data-color="blue" data-image="public/img/sidebar-5.jpg">
+    <div class="sidebar" data-color="green" data-image="public/img/sidebar-5.jpg">
         <?php template('sidebar'); ?> 
     </div> <!-- .sidebar -->
 
