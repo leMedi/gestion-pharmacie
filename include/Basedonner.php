@@ -31,6 +31,7 @@ class BaseDonner
 
         try{
             $this->db = new PDO('mysql:host=' . db_host . ';dbname=' . db_name, db_user, db_pass);
+            $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
         }
         catch(PDOException $ex){
             die('impossible de se connecter a la base de donner');
