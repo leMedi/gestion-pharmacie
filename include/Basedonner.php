@@ -95,7 +95,7 @@ class BaseDonner
         return $stmt->execute($_donner);
     }
 
-    public function enregister()
+    public function enregistrer()
     {
         $donner = array();
         foreach ($this->columns as $col) {
@@ -137,7 +137,7 @@ class BaseDonner
             $stmt = $this->db->prepare("SELECT * FROM $this->table");
         else
             $stmt = $this->db->prepare("SELECT * FROM $this->table WHERE $col = :val");
-        
+        var_dump($stmt);
         $stmt->execute(array(
                         ':val' => $val,
                        ));
@@ -145,7 +145,6 @@ class BaseDonner
         if ($stmt->rowCount() == 0) 
             return false;
         else{
-
             $resultat = $stmt->fetchAll();
             $resultat_obj = array();
             foreach ($resultat as $line) {

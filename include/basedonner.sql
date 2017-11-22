@@ -5,7 +5,7 @@ USE pharmacie;
 
 
 CREATE TABLE employers(
-   id       INT             NOT NULL AUTO_INCREMENT,
+   id         int           NOT NULL     AUTO_INCREMENT,
    nom      VARCHAR (20)    NOT NULL,
    prenom   VARCHAR (20)    NOT NULL,
    tel      INT             NOT NULL,
@@ -34,11 +34,11 @@ CREATE TABLE Medicaments(
 );
 
 CREATE TABLE clients(
-   id       INT             NOT NULL AUTO_INCREMENT,
-   nom      VARCHAR (20)    NOT NULL,
-   prenom   VARCHAR (20)    NOT NULL,
-   tel      INT    			NOT NULL,
-   montant_restant   INT    NOT NULL,
-   adresse   VARCHAR (100)   NOT NULL,
+   id         int             NOT NULL     AUTO_INCREMENT,
+   nom      VARCHAR (20)      NOT NULL,
+   prenom   VARCHAR (20)      NOT NULL,
+   tel      INT    			   NOT NULL,
+   montant_restant   INT      NOT NULL default 0,
+   adresse   VARCHAR (100),
    PRIMARY KEY (id)
 );
