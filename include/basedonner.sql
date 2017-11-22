@@ -20,7 +20,6 @@ CREATE TABLE Medicaments(
    form         VARCHAR (15)    NOT NULL,
    prix_achat   INT             NOT NULL,
    prix_vente   FLOAT(7,2)      NOT NULL,
-   prix_vente   FLOAT(7,2)      NOT NULL,
    qte          INT             UNSIGNED NOT NULL,
    aille        INT(3)          UNSIGNED,
    col          INT(3)          UNSIGNED,
