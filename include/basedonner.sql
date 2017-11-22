@@ -11,6 +11,7 @@ CREATE TABLE employers(
    tel      INT             NOT NULL,
    address  VARCHAR (40)    NOT NULL,
    email    VARCHAR (100)   NOT NULL CHECK (email LIKE '%_@__%.__%'),
+   salaire  INT             NOT NULL,
    password VARCHAR (30)    NOT NULL,
    admin    BOOLEAN         NOT NULL default 0,
    PRIMARY KEY (id)
