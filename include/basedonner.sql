@@ -3,6 +3,7 @@ CREATE DATABASE pharmacie;
 USE pharmacie;
 
 
+
 CREATE TABLE employers(
    id       INT             NOT NULL,
    nom      VARCHAR (20)    NOT NULL,
@@ -26,5 +27,15 @@ CREATE TABLE Medicaments(
    etage        INT(3)          UNSIGNED,
    expiration   DATE            NOT NULL,
    description  TEXT,
+   PRIMARY KEY (id)
+);
+
+CREATE TABLE clients(
+   id       INT             NOT NULL,
+   nom      VARCHAR (20)    NOT NULL,
+   prenom   VARCHAR (20)    NOT NULL,
+   tel      INT    			NOT NULL,
+   montant_restant   INT    NOT NULL,
+   adresse   VARCHAR (100)   NOT NULL,
    PRIMARY KEY (id)
 );
