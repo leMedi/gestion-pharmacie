@@ -7,16 +7,11 @@
 
     <ul class="nav">
         <li class="active">
-            <a href="dashboard.html">
+            <a href="/gestion-pharmacie/backoffice.php">
                 <i class="pe-7s-graph"></i>
                 <p>Dashboard</p>
             </a>
         </li>
-        <li>
-            <a href="user.html">
-                <i class="pe-7s-user"></i>
-                <p>User Profile</p>
-            </a>
-        </li>
+        
     </ul>
 </div> <!-- .sidebar-wrapper -->
