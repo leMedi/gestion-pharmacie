@@ -5,6 +5,14 @@ session_regenerate_id();
 
 require_once('config.php');
 require_once('basedonner.php');
+require_once('Acteur.php');
+
+// dump and die
+function dd($var)
+{
+    var_dump($var);
+    die();
+}
 
 function template($nom, $data = array())
 {
