@@ -49,8 +49,9 @@ class BaseDonner
     {
         foreach ($this->columns as $col) {
             if(array_key_exists($col, $line))
-            $this->$col = $line[$col];
+                $this->$col = $line[$col];
         }
+        $this->id =  $line['id'];
     }
 
 
