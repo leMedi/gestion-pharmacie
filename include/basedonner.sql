@@ -17,7 +17,7 @@ CREATE TABLE employers(
 );
 
 CREATE TABLE Medicaments(
-   id            int            NOT NULL     AUTO_INCREMENT,
+   id           INT             NOT NULL AUTO_INCREMENT,
    nom          VARCHAR (20)    NOT NULL,
    ref          VARCHAR (5)     NOT NULL,
    form         VARCHAR (15)    NOT NULL,
