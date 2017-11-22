@@ -138,23 +138,20 @@ class BaseDonner
             $stmt = $this->db->prepare("SELECT * FROM $this->table");
         else
             $stmt = $this->db->prepare("SELECT * FROM $this->table WHERE $col = :val");
-        var_dump($stmt);
+
         $stmt->execute(array(
                         ':val' => $val,
                        ));
 
-        if ($stmt->rowCount() == 0) 
-            return false;
-        else{
-            $resultat = $stmt->fetchAll();
-            $resultat_obj = array();
-            foreach ($resultat as $line) {
-                $p = new static();
-                $p->remplire_PDO($line);
-                $resultat_obj[] = $p;
-            }
-            return $resultat_obj;
+
+        $resultat = $stmt->fetchAll();
+        $resultat_obj = array();
+        foreach ($resultat as $line) {
+            $p = new static();
+            $p->remplire_PDO($line);
+            $resultat_obj[] = $p;
         }
+        return $resultat_obj;
     }
 
     public function auth($email, $password)
