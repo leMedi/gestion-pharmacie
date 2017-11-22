@@ -25,6 +25,26 @@ class Medicaments extends basedonner
     }
 }
 
+/**
+* Model Clients
+*/
+class Clients extends basedonner
+{
+    protected $table = 'clients';
+    protected $columns = array('nom', 'prenom', 'tel', 'montant_restant',
+                             'adresse');
+
+    function __construct($donner = null)
+    {
+        Parent::__construct($this->table, $this->columns);
+
+        if($donner){
+            $this->remplire($donner);
+        }
+
+    }
+}
+
 
 
 
