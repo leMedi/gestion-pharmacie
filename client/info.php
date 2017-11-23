@@ -65,7 +65,7 @@ if($client == false)
                                     <h4><p class="category">Tel</p><?= $client->tel?></h4>
                                 </div>
                                 <div class="typo-line">
-                                    <h4><p class="category">Montant restant à payer</p><?= $client->montant_restant?> DH</h4>
+                                    <h4><p class="category">Montant restant <br> à payer</p><?= $client->montant_restant?> DH</h4>
                                 </div>
 
                                 <div class="typo-line">
