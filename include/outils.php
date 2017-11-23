@@ -94,9 +94,6 @@ function medicamentsSession()
     return $medicaments;
 }
 
-
-
-
 $current_user = NULL;
 if(!lienContient('login.php')){
     $current_user = pageProteger();
