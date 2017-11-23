@@ -11,7 +11,7 @@
 	<div class="wrapper">
 
 		<form action="" method="post" name="Login_Form" class="form-signin">
-		    <img alt="User Pic" src="img/profile.jpg" id="profile-image1">       
+		    <img alt="User Pic" src="public/img/profile.jpg" id="profile-image1">       
 		    <h3 class="form-signin-heading">Se Connecter</h3>
 			  <hr class="colorgraph"><br>
 			  
