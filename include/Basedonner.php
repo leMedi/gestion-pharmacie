@@ -211,6 +211,15 @@ class BaseDonner
         return $resultat_obj;
     }
 
+    public function supprimer()
+    {
+        return $this->executer("DELETE FROM $this->table WHERE id = $this->id");
+        // $obj = new Obj();
+        // $obj = Obj->trouver('id', $_POST['id'])
+        // if($obj != false)
+            // $obj->supprimer();
+    }
+
     public function auth($email, $password)
     {
         $stmt = $this->db->prepare("SELECT COUNT(*) AS `total` FROM $this->table WHERE email = :email and password = :password");
