@@ -15,6 +15,7 @@ class BaseDonner
 
     function __construct($table, $columns)
     {
+        $this->id = -1;
         $this->table = $table;
         $this->columns = $columns;
 
@@ -96,6 +97,29 @@ class BaseDonner
         return $stmt->execute($_donner);
     }
 
+    public function modifier($donner)
+    {
+        $_cols = array();
+        foreach ($this->columns as $col) {
+            $_cols[] = $col . "=:" . $col;
+        }
+        $_cols = join(', ', $_cols);
+
+        $_donner = array();
+        foreach ($this->columns as $col) {
+            $_donner[$col] = '';
+            if(array_key_exists($col, $donner))
+                $_donner[$col] = $donner[$col];
+        }
+
+        $_donner['id'] = $donner['id'];
+
+        $sql = "UPDATE $this->table SET $_cols WHERE id = :id";
+        $stmt = $this->db->prepare($sql);
+
+        return $stmt->execute($_donner);
+    }
+
     public function enregistrer()
     {
         $donner = array();
@@ -103,9 +127,19 @@ class BaseDonner
             $donner[$col] = $this->$col;
         }
 
-        return $this->ajouter($donner);
-    }
+        if($this->id > -1)
+        {
+            // modifier
+            $donner['id'] = $this->id;
+            return $this->modifier($donner);
+        }
+        else 
+        {
+            // ajouter
+            return $this->ajouter($donner);
+        }
 
+    }
 
     public static function trouver($col, $val)
     {
