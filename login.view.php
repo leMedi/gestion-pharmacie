@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="public/css/login.css">
 	<link rel="stylesheet" type="text/css" href="public/css/bootstrap.min.css">
 </head>
-<body>
+<body background="public/img/comprimer.jpg" style="background-size: cover;">
 
 <div class = "container">
 	<div class="wrapper">
