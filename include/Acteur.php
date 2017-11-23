@@ -55,7 +55,7 @@ class Clients extends basedonner
 class Employers extends basedonner
 {
     protected $table = 'employers';
-    protected $columns = array('nom', 'prenom', 'tel', 'address','email','password','salaire','admin');
+    protected $columns = array('nom', 'prenom', 'tel','email','address','salaire','password','admin');
 
     function __construct($donner = null)
     {
@@ -66,6 +66,7 @@ class Employers extends basedonner
         }
 
     }
+    
 }
 
 
