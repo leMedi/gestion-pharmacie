@@ -14,3 +14,29 @@
 #nav-header .btn.btn-primary i {
     margin-right: 5px;
 }
+
+/***********************
+/// Components
+**********/
+
+/***** Medicament ******/
+@media (min-width: 992px){
+    .typo-line{
+        padding-left: 140px;
+        margin-bottom: 40px;
+        position: relative;
+    }
+
+    .typo-line .category{
+        transform: translateY(-50%);
+        top: 50%;
+        left: 0px;
+        position: absolute;
+    }
+}
+
+#med-chercher-input {
+    width: calc(100% - 180px);
+}
+
+#med-chercher-input input { width: 100% }

@@ -17,8 +17,17 @@ require_once(__DIR__. '/../include/outils.php');
         <?php template('sidebar'); ?> 
     </div> <!-- .sidebar -->
 
-    <div class="main-panel">
-        <?php template('nav'); ?> 
+        <div class="main-panel">
+        <?php template('nav', array(
+            'title' => 'Clients',
+            'actions' => array(
+                array(
+                    'nom'   => 'Ajouter',
+                    'icon'  => 'fa fa-plus',
+                    'lien'  => '/client/ajouter.php'
+                )
+            )
+        )); ?>
     
         <div class="content">
             <div class="container-fluid">
@@ -35,7 +44,7 @@ require_once(__DIR__. '/../include/outils.php');
                                        <div class="col-md-12">
                                            <div class="form-group">
                                                <label>Nom</label>
-                                               <input type="text" class="form-control" placeholder="Nom" name="nom">
+                                               <input type="text" class="form-control" placeholder="Nom" name="client[nom]">
                                            </div>
                                        </div>
                                     </div>
@@ -43,7 +52,7 @@ require_once(__DIR__. '/../include/outils.php');
                                        <div class="col-md-12">
                                            <div class="form-group">
                                                <label>Prenom</label>
-                                               <input type="text" class="form-control" placeholder="Prenom" name="prenom">
+                                               <input type="text" class="form-control" placeholder="Prenom" name="client[prenom]">
                                            </div>
                                        </div>
                                    </div>
@@ -52,7 +61,7 @@ require_once(__DIR__. '/../include/outils.php');
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Tel</label>
-                                                <input type="text" class="form-control" placeholder="Tel" name="tel">
+                                                <input type="text" class="form-control" placeholder="Tel" name="client[tel]">
                                             </div>
                                         </div>
                                     </div>
@@ -60,7 +69,7 @@ require_once(__DIR__. '/../include/outils.php');
                                        <div class="col-md-12">
                                            <div class="form-group">
                                                <label>Montant Restant à payer</label>
-                                               <input type="text" class="form-control" placeholder="Montant Restant à payer" name="montant_restant">
+                                               <input type="text" class="form-control" placeholder="Montant Restant à payer" name="client[montant_restant]">
                                            </div>
                                        </div>
                                    </div>
@@ -68,7 +77,7 @@ require_once(__DIR__. '/../include/outils.php');
                                        <div class="col-md-12">
                                            <div class="form-group">
                                                <label>Adresse</label>
-                                               <input type="text" class="form-control" placeholder="Adresse" name="adresse">
+                                               <input type="text" class="form-control" placeholder="Adresse" name="client[adresse]">
                                            </div>
                                        </div>
                                    </div>

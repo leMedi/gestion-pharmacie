@@ -6,21 +6,14 @@ $client = new Clients;
 
 $errors = "";
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["nom"]) && isset($_POST["prenom"]) && isset($_POST["tel"]) && isset($_POST["montant_restant"]) && isset($_POST["adresse"])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["client"]) ) {
 
-  $client->nom = $_POST["nom"];
-  $client->prenom = $_POST["prenom"];
-  $client->tel = $_POST["tel"];
-  $client->montant_restant = $_POST["montant_restant"];
-  $client->adresse = $_POST["adresse"];
+  $clients = new Clients($_POST["client"]);
 
-  $result = $client->enregistrer();
+    $result = $clients->enregistrer();
 
-  if($result === true)
-    
-    header('Location:index.php');
-  else 
-    $error = $result;
+    if($result === true)
+        header('Location:index.php');
 }
 
 include "ajouter.view.php";

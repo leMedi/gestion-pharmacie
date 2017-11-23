@@ -1,52 +1,37 @@
 <?php
-require __DIR__. '/../include/outils.php';
+require_once( __DIR__. '/../include/outils.php');
+
+
+// if(isset($_GET['q']))
 
 $medicaments = new Medicaments();
-$medicaments = $medicaments->tous();
-
-?>
-
-
-<?php
-    template('header', array(
-        'path' => '../'
-    ));
-?>
-
-<div class="wrapper">
-    <div class="sidebar" data-color="blue" data-image="../public/img/sidebar-5.jpg">
-        <?php template('sidebar'); ?> 
-    </div> <!-- .sidebar -->
-
-    <div class="main-panel">
-        <?php template('nav', array(
-            'title' => 'Medicaments',
-            'actions' => array(
-                array(
-                    'nom'   => 'Ajouter',
-                    'icon'  => 'fa fa-plus',
-                    'lien'  => '/medicaments/ajouter.php'
-                )
-            )
-        )); ?> 
+if(isset($_GET["col"]) && isset($_GET["q"])) {
     
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <?php
-                            template('medicaments.table', array(
-                                'title'         => 'Les Medicaments',
-                                'subtitle'      => 'Tous les medicaments disponible dans le stock',
-                                'medicaments' => $medicaments
-                            ));
-                        ?>
-                    </div> <!-- .col -->
-                </div> <!-- .row -->
-            </div>
-        </div> <!-- .content -->
-<?php
-    template('footer', array(
-        'path' => '../'
-    ));
+    // $medicaments = new Medicaments();
+    
+    $col = $_GET["col"];
+    $val = $_GET["q"];
+    // dd($col);
+    switch($col) {
+        case 'ref':
+            $medicaments = $medicaments->trouver($col, $val);
+            // dd($medicaments);
+            if($medicaments != false)
+                header('Location:info.php?id=' . $medicaments->id);
+
+            $medicaments = array();
+            break;
+        case 'nom':
+            $medicaments = $medicaments->cherche('nom', $val);
+        break;
+    }
+
+    // else
+        // include "modifier.view.php";
+    include "index.view.php";
+
+}else {
+    $medicaments = $medicaments->tous();
+    include "index.view.php";
+}
 ?>

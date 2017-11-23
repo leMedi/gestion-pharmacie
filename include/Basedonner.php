@@ -171,6 +171,24 @@ class BaseDonner
         }
     }
 
+    public function cherche($col, $val)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM $this->table WHERE $col LIKE CONCAT('%', CONCAT(:val, '%'))");
+        $stmt->bindParam(':val', $val);
+        $stmt->execute();
+        
+        $resultat = $stmt->fetchAll();
+        
+        $resultat_obj = array();
+        foreach ($resultat as $line) {
+            $p = new static();
+            $p->remplire_PDO($line);
+            $resultat_obj[] = $p;
+        }
+
+        return $resultat_obj;
+    }
+
     public function tous($col = null, $val = null)
     {
         if($col == null || $val == null)
