@@ -45,6 +45,25 @@ class Clients extends basedonner
     }
 }
 
+/**
+* Model employers
+*/
+class Employers extends basedonner
+{
+    protected $table = 'employers';
+    protected $columns = array('nom', 'prenom', 'tel', 'address','email','password','salaire','admin');
+
+    function __construct($donner = null)
+    {
+        Parent::__construct($this->table, $this->columns);
+
+        if($donner){
+            $this->remplire($donner);
+        }
+
+    }
+}
+
 
 
 
