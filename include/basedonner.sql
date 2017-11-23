@@ -25,7 +25,7 @@ CREATE TABLE Medicaments(
    prix_achat   INT             NOT NULL,
    prix_vente   FLOAT(7,2)      NOT NULL,
    qte          INT             UNSIGNED NOT NULL,
-   aille        INT(3)          UNSIGNED,
+   aille        VARCHAR(2),
    col          INT(3)          UNSIGNED,
    etage        INT(3)          UNSIGNED,
    expiration   DATE            NOT NULL,
