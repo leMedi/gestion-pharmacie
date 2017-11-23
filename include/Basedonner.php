@@ -15,6 +15,7 @@ class BaseDonner
 
     function __construct($table, $columns)
     {
+        $this->id = -1;
         $this->table = $table;
         $this->columns = $columns;
 
@@ -36,6 +37,11 @@ class BaseDonner
         catch(PDOException $ex){
             die('impossible de se connecter a la base de donner');
         }
+    }
+
+    public function toArray()
+    {
+        return (array) $this; 
     }
 
     public function remplire($donner)
@@ -96,6 +102,29 @@ class BaseDonner
         return $stmt->execute($_donner);
     }
 
+    public function modifier($donner)
+    {
+        $_cols = array();
+        foreach ($this->columns as $col) {
+            $_cols[] = $col . "=:" . $col;
+        }
+        $_cols = join(', ', $_cols);
+
+        $_donner = array();
+        foreach ($this->columns as $col) {
+            $_donner[$col] = '';
+            if(array_key_exists($col, $donner))
+                $_donner[$col] = $donner[$col];
+        }
+
+        $_donner['id'] = $donner['id'];
+
+        $sql = "UPDATE $this->table SET $_cols WHERE id = :id";
+        $stmt = $this->db->prepare($sql);
+
+        return $stmt->execute($_donner);
+    }
+
     public function enregistrer()
     {
         $donner = array();
@@ -103,9 +132,19 @@ class BaseDonner
             $donner[$col] = $this->$col;
         }
 
-        return $this->ajouter($donner);
-    }
+        if($this->id > -1)
+        {
+            // modifier
+            $donner['id'] = $this->id;
+            return $this->modifier($donner);
+        }
+        else 
+        {
+            // ajouter
+            return $this->ajouter($donner);
+        }
 
+    }
 
     public static function trouver($col, $val)
     {
@@ -138,23 +177,20 @@ class BaseDonner
             $stmt = $this->db->prepare("SELECT * FROM $this->table");
         else
             $stmt = $this->db->prepare("SELECT * FROM $this->table WHERE $col = :val");
-        var_dump($stmt);
+
         $stmt->execute(array(
                         ':val' => $val,
                        ));
 
-        if ($stmt->rowCount() == 0) 
-            return false;
-        else{
-            $resultat = $stmt->fetchAll();
-            $resultat_obj = array();
-            foreach ($resultat as $line) {
-                $p = new static();
-                $p->remplire_PDO($line);
-                $resultat_obj[] = $p;
-            }
-            return $resultat_obj;
+
+        $resultat = $stmt->fetchAll();
+        $resultat_obj = array();
+        foreach ($resultat as $line) {
+            $p = new static();
+            $p->remplire_PDO($line);
+            $resultat_obj[] = $p;
         }
+        return $resultat_obj;
     }
 
     public function auth($email, $password)

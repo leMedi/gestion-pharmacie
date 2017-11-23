@@ -1,4 +1,6 @@
 <?php
+    // localhost/gestion-phramacie
+    define('site', '/gestion-pharmacie');
 
     ///////////////
     /// Configuration du base de donner

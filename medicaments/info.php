@@ -1,6 +1,14 @@
 <?php
 require __DIR__. '/../include/outils.php';
 
+if(!isset($_GET['id']))
+    header('Location:index.php');
+
+$medicament = new Medicaments();
+$medicament = $medicament->trouver('id', $_GET['id']);
+
+if($medicament == false)
+    header('Location:index.php');
 ?>
 
 
@@ -16,7 +24,16 @@ require __DIR__. '/../include/outils.php';
     </div> <!-- .sidebar -->
 
     <div class="main-panel">
-        <?php template('nav'); ?> 
+        <?php template('nav', array(
+            'title' => 'Medicaments',
+            'actions' => array(
+                array(
+                    'nom'   => 'Ajouter',
+                    'icon'  => 'fa fa-plus',
+                    'lien'  => '/medicaments/ajouter.php'
+                )
+            )
+        )); ?> 
     
         <div class="content">
             <div class="container-fluid">
@@ -25,45 +42,49 @@ require __DIR__. '/../include/outils.php';
                     <div class="col-md-6">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Dwa Lkohba</h4>
+                                <h4 class="title">
+                                    <?= $medicament->nom ?>
+                                    <a class="btn btn-primary pull-right"  href="<?= lien('/medicaments/modifier.php?id=' . $medicament->id) ?>">
+                                        <i class="fa fa-plus"></i>
+                                        Modifier
+                                    </a>
+                                </h4>
                                 <hr>
                             </div>
                             <div class="content">
                                 <div class="typo-line">
-                                    <h4><p class="category">Reference</p>EGH2156</h4>
+                                    <h4><p class="category">Reference</p><?= $medicament->ref ?></h4>
                                 </div>
 
                                 <div class="typo-line">
-                                    <h4><p class="category">Type</p>Sirope </h4>
+                                    <h4><p class="category">Type</p><?= $medicament->form ?></h4>
                                 </div>
 
 
                                 <div class="typo-line">
-                                    <h4><p class="category">Prix d'Achat</p>30 DH </h4>
+                                    <h4><p class="category">Prix d'Achat</p><?= $medicament->prix_achat ?> DH</h4>
                                 </div>
                                 <div class="typo-line">
-                                    <h4><p class="category">Prix de Vente</p>50 DH </h4>
+                                    <h4><p class="category">Prix de Vente</p><?= $medicament->prix_vente ?> DH</h4>
                                 </div>
 
                                 <div class="typo-line">
-                                    <h4><p class="category">Quantité</p>501 </h4>
+                                    <h4><p class="category">Quantité</p><?= $medicament->qte ?></h4>
                                 </div>
                                 
                                 
                                 <div class="typo-line">
-                                    <h4><p class="category">Position</p>A-5-1 </h4>
+                                    <h4><p class="category">Position</p><?= $medicament->position() ?></h4>
                                 </div>
 
                                 <div class="typo-line">
-                                    <h4><p class="category">Date d'Expiration</p>20/05/2025 </h4>
+                                    <h4><p class="category">Date d'Expiration</p><?= $medicament->expiration ?></h4>
                                 </div>
 
                                 <div class="typo-line">
                                     <p class="category">Description</p>
                                     <blockquote>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam.
-                                        </p>
+                                        <p><?= $medicament->description ?></p>
                                     </blockquote>
                                 </div>
                                 

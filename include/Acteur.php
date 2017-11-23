@@ -23,6 +23,10 @@ class Medicaments extends basedonner
         }
 
     }
+    
+    public function position() {
+        return $this->aille . '-' . $this->col . '-' . $this->etage;
+    }
 }
 
 /**
