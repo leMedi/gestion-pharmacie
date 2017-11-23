@@ -1,3 +1,4 @@
+<?php global $current_user; ?>
 <div class="sidebar-wrapper">
     <div class="logo">
         <a href="http://www.creative-tim.com" class="simple-text">
@@ -26,12 +27,16 @@
             </a>
         </li>
 
+        <?php if($current_user->estAdmin() ): ?>
+
         <li class="<?= active('/employe') ?>">
             <a href="<?= lien('/employe/') ?>">
                 <i class="pe-7s-id"></i>
                 <p>Employes</p>
             </a>
         </li>
+
+    <?php endif; ?>
         
     </ul>
 </div> <!-- .sidebar-wrapper -->
