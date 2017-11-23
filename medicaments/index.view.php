@@ -53,7 +53,7 @@
                                 <div class="card">
                                     <div class="header">
                                         <h4 class="title"><?= $_GET['q'] ?></h4>
-                                        <p class="category">Resulta de recherche</p>
+                                        <p class="category">Resultat de recherche</p>
                                     </div>
                                     <div class="content">
                                         <div class="alert alert-danger" role="alert">
