@@ -85,3 +85,28 @@
         'path' => '../'
     ));
 ?>
+
+<script>
+    $('.btn-add-cart').click(function(e){
+        e.preventDefault();
+        $this = $(this);
+
+        var estAjouter = $this.hasClass('btn-success');
+        var action =  estAjouter ? 'ajouter_p' : 'enlever_p';
+
+        $.post('<?= lien('/achat/handler.php') ?>',
+        {
+            action: action,
+            id: $this.data('id')   
+        })
+        .done(function (data) {
+            console.log(data);
+            if(data == 'ok'){
+                if(estAjouter)
+                    $this.removeClass('btn-success').addClass('btn-warning').html('<span class="pe-7s-shopbag"></span> Retirer du panier');
+                else
+                    $this.addClass('btn-success').removeClass('btn-warning').html('<span class="pe-7s-shopbag"></span> Ajouter au Panier');
+            }
+        });
+    })
+</script>

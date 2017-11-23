@@ -26,8 +26,17 @@
                             <span class="pe-7s-edit"></span>Modifier
                         </a>
                         <a class="btn btn-danger btn-xs" href="<?= lien('/medicaments/supprimer.php?id=' . $medicament->id) ?>">
-                            <span class="pe-7s-delete-user"></span>Supprimer
+                            <span class="pe-7s-trash"></span>Supprimer
                         </a>
+                        <?php if(in_array($medicament->id, $_SESSION['medicaments'])): ?>
+                            <button class="btn-add-cart btn btn-warning btn-xs" data-id="<?= $medicament->id ?>">
+                                <span class="pe-7s-shopbag"></span>Retirer du panier
+                            </button>          
+                        <?php else: ?>
+                            <button class="btn-add-cart btn btn-success btn-xs" data-id="<?= $medicament->id ?>">
+                                <span class="pe-7s-shopbag"></span>Ajouter au Panier
+                            </button>
+                        <?php endif; ?>
                     </td>
                 </tr>
                 <?php
