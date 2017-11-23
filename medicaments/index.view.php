@@ -85,3 +85,19 @@
         'path' => '../'
     ));
 ?>
+
+<script>
+    $('.btn-add-cart').click(function(e){
+        e.preventDefault();
+        $this = $(this);
+
+        $.post('<?= lien('/achat/handler.php') ?>',
+        {
+            action: 'ajouter_p',
+            id: $this.data('id')   
+        })
+        .done(function (data) {
+            console.log(data);
+        });
+    })
+</script>
