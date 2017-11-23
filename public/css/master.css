@@ -1,4 +1,14 @@
 /***********************
+/// Global
+**********/
+ /* margin top & bottom 0 */
+.my-0 {
+    margin-top: 0; 
+    margin-bottom: 0; 
+}
+
+
+/***********************
 /// Header
 **********/
 .navbar a.navbar-brand{
