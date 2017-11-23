@@ -1,6 +1,8 @@
 <?php
 require __DIR__. '/../include/outils.php';
 
+
+
 if(!isset($_GET['id']))
     header('Location:index.php');
 
