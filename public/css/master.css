@@ -1,0 +1,16 @@
+/***********************
+/// Header
+**********/
+.navbar a.navbar-brand{
+    margin-top: 10px;
+}
+
+#nav-header .btn.btn-primary{
+    color: #fff;
+    background-color: #5cb85c!important;
+    border-color: #4cae4c!important;
+}
+
+#nav-header .btn.btn-primary i {
+    margin-right: 5px;
+}

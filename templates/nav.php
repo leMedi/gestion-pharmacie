@@ -7,9 +7,22 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Dashboard</a>
+            <a class="navbar-brand" href="#"><?= isset($title) ? $title : 'Backoffice' ?></a>
         </div>
         <div class="collapse navbar-collapse">
+            <ul id="nav-header" class="nav navbar-nav navbar-left">
+                <?php
+                    $actions = isset($actions) ? $actions : array() ;
+                    foreach ($actions as $action):
+                ?>
+                <li>
+                    <a href="<?= site . $action['lien'] ?>" class="btn btn-primary">
+                        <i class="<?= $action['icon'] ?>"></i>
+                        <?= $action['nom'] ?>
+                    </a>
+                </li>
+                <?php endforeach; ?>
+            </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
