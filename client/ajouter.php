@@ -14,11 +14,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["nom"]) && isset($_POS
   $client->montant_restant = $_POST["montant_restant"];
   $client->adresse = $_POST["adresse"];
 
-  $result = $client->enregister();
+  $result = $client->enregistrer();
 
   if($result === true)
-    var_dump($client);
-    // header('Location:index.php');
+    
+    header('Location:index.php');
   else 
     $error = $result;
 }
