@@ -45,4 +45,16 @@ function active($path = null)
     return '';
 }
 
+// select input
+// return 'selected'
+function select($param, $str, $default = false)
+{
+    if(
+        (isset($_GET[$param]) && $_GET[$param] == $str)
+        || $default
+    )
+        return 'selected';
+    return '';
+}
+
 
