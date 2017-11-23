@@ -24,12 +24,26 @@
                   <td><?= $client->montant_restant ?></td>
                   <td><?= $client->adresse ?></td>
                   <td>
-                      <a class="btn btn-info btn-xs" href="<?= lien('/client/modifier.php?id=' . $client->id) ?>">
-                          <span class="pe-7s-edit"></span>Modifier
-                      </a>
-                      <a class="btn btn-danger btn-xs" href="<?= lien('/client/supprimer.php?id=' . $client->id) ?>">
-                          <span class="pe-7s-delete-user"></span>Supprimer
-                      </a>
+                        <a class="btn btn-info btn-xs" href="<?= lien('/client/modifier.php?id=' . $client->id) ?>">
+                            <span class="pe-7s-edit"></span>Modifier
+                        </a>
+                        <a class="btn btn-danger btn-xs" href="<?= lien('/client/supprimer.php?id=' . $client->id) ?>">
+                            <span class="pe-7s-delete-user"></span>Supprimer
+                        </a>
+                        <form action="<?= lien('/achat/handler.php') ?>" method="POST" style="display:inline-block;">
+                            <input name="id" type="text" value="<?= $client->id ?>" hidden>
+                            <?php if($client->id === $_SESSION['client'] ): ?>
+                                <input name="action" type="text" value="clientfa" hidden>
+                                <button class="btn-add-cart btn btn-warning btn-xs">
+                                    <span class="pe-7s-shopbag"></span>Anuller La Facture
+                                </button>          
+                            <?php else: ?>
+                                <input name="action" type="text" value="clientf" hidden>
+                                <button class="btn-add-cart btn btn-success btn-xs">
+                                    <span class="pe-7s-shopbag"></span>Facture pour Client
+                                </button>
+                            <?php endif; ?>
+                        </form>
                   </td>
                 </tr>
               <?php
