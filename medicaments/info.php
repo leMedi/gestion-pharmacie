@@ -48,6 +48,15 @@ if($medicament == false)
                                         <i class="fa fa-plus"></i>
                                         Modifier
                                     </a>
+                                    <?php if(in_array($medicament->id, $_SESSION['medicaments'])): ?>
+                                        <button id="btn-add-cart" class="btn btn-warning pull-right" data-id="<?= $medicament->id ?>">
+                                            <i class="fa fa-minus"></i>Retirer du panier
+                                        </button>          
+                                    <?php else: ?>
+                                        <button id="btn-add-cart" class="btn btn-success pull-right" data-id="<?= $medicament->id ?>">
+                                            <i class="fa fa-plus"></i>Ajouter au Panier
+                                        </button>
+                                    <?php endif; ?>
                                 </h4>
                                 <hr>
                             </div>
@@ -101,3 +110,27 @@ if($medicament == false)
         'path' => '../'
     ));
 ?>
+<script>
+    $('#btn-add-cart').click(function(e){
+        e.preventDefault();
+        $this = $(this);
+
+        var estAjouter = $this.hasClass('btn-success');
+        var action =  estAjouter ? 'ajouter_p' : 'enlever_p';
+
+        $.post('<?= lien('/achat/handler.php') ?>',
+        {
+            action: action,
+            id: $this.data('id')   
+        })
+        .done(function (data) {
+            console.log(data);
+            if(data == 'ok'){
+                if(estAjouter)
+                    $this.removeClass('btn-success').addClass('btn-warning').html('<i class="fa fa-minus"></i> Retirer du panier');
+                else
+                    $this.addClass('btn-success').removeClass('btn-warning').html('<i class="fa fa-plus"></i> Ajouter au Panier');
+            }
+        });
+    })
+</script>
