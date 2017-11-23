@@ -20,3 +20,8 @@ function template($nom, $data = array())
     require __DIR__ . '/../templates/' . $nom . '.php';
 }
 
+function lien($lien)
+{
+    return site . $lien;
+}
+
