@@ -39,6 +39,11 @@ class BaseDonner
         }
     }
 
+    public function toArray()
+    {
+        return (array) $this; 
+    }
+
     public function remplire($donner)
     {
         foreach ($donner as $cle => $valeur) {
