@@ -12,6 +12,14 @@
                 <p>Backoffice</p>
             </a>
         </li>
+
+        <li class="<?= active('/achat') ?>">
+            <a href="<?= lien('/achat/') ?>">
+                <i class="pe-7s-shopbag"></i>
+                <p>Achat</p>
+            </a>
+        </li>
+
         <li class="<?= active('/medicaments') ?>">
             <a href="<?= lien('/medicaments/') ?>">
                 <i class="pe-7s-shopbag"></i>
