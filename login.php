@@ -1,29 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>login</title>
-	<link rel="stylesheet" type="text/css" href="public/css/login.css">
-	<link rel="stylesheet" type="text/css" href="public/css/bootstrap.min.css">
-</head>
-<body>
+<?php
 
-<div class = "container">
-	<div class="wrapper">
-
-		<form action="" method="post" name="Login_Form" class="form-signin">
-		    <img alt="User Pic" src="public/img/profile.jpg" id="profile-image1">       
-		    <h3 class="form-signin-heading">Se Connecter</h3>
-			  <hr class="colorgraph"><br>
-			  
-			  <input type="text" class="form-control" name="email" placeholder="email" required="" autofocus="" />
-			  <input type="password" class="form-control" name="Password" placeholder="mot de pass" required=""/>     		  
-			 
-			  <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">connexion</button>  			
-		</form>			
-	</div>
-</div>
+require __DIR__. '/include/outils.php';
 
 
 
-</body>
-</html>
+$employe = new Employers;
+
+
+
+$error = "";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["email"]) && isset($_POST["password"])) 
+{
+	$result = $employe->auth($_POST["email"], $_POST["password"]);
+
+
+	if($result === true){
+		$employe = $employe->trouver('email', $_POST["email"]);
+		$_SESSION['connecter'] = true;
+		$_SESSION['user_id'] = $employe->id;
+		header('Location: backoffice.php');
+	}
+		
+	else 
+		$error = $result;
+		
+}
+
+
+ require "login.view.php";
+
+
+
+
+
+  ?>
+
+
+

@@ -2,6 +2,8 @@
 
 require_once( __DIR__. '/../include/outils.php');
 
+
+
 $client = new Clients;
 
 $errors = "";
