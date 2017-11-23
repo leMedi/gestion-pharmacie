@@ -70,7 +70,7 @@ $employers = $employers->tous();
                                         <td><?= $e->salaire ?></td>
                                         <td><?= $e->admin ?></td>
                                         <td><a class='btn btn-info btn-xs' href="<?= lien('/employe/modifier.php?id=' . $e->id) ?>"><span class="pe-7s-edit"></span>Modifier</a>
-                                         <a href="#" class="btn btn-danger btn-xs"><span class="pe-7s-delete-user"></span>Supprimer</a></td>
+                                         <a href="<?= lien('/employe/supprimer.php?id=' . $e->id) ?>" class="btn btn-danger btn-xs"><span class="pe-7s-delete-user"></span>Supprimer</a></td>
                                        </tr>
                                     <?php endforeach; ?>   
                                    </tbody>
