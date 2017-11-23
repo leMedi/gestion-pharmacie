@@ -224,9 +224,9 @@ class BaseDonner
     {
         $stmt = $this->db->prepare("SELECT COUNT(*) AS `total` FROM $this->table WHERE email = :email and password = :password");
         $stmt->execute(array(
-                        ':email' => $email,
-                        ':password' => $password
-                       ));
+            ':email' => $email,
+            ':password' => $password
+       ));
         
         $result = $stmt->fetchObject();
 

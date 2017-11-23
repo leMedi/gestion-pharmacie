@@ -66,6 +66,11 @@ class Employers extends basedonner
         }
 
     }
+
+    public function estAdmin()
+    {
+        return $this->admin == 0 ? false : true;
+    }
     
 }
 

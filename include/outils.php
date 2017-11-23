@@ -57,6 +57,19 @@ function select($param, $str, $default = false)
         return 'selected';
     return '';
 }
+ 
+function pageProteger(){
+    if(isset($_SESSION['connecter']) && $_SESSION['connecter'] && isset($_SESSION['user_id'])){
+        $employe = new Employers;
+        $employe = $employe->trouver('id', $_SESSION['user_id']);
+        return $employe;
+    }else{
+        $_SESSION['connecter'] = false;
+        $_SESSION['user_id'] = -1;
+        header('Location:'. lien('/login.php'));
+   
+    }
+}
 
 function init_session()
 {
@@ -84,3 +97,7 @@ function medicamentsSession()
 
 
 
+$current_user = NULL;
+if(!lienContient('login.php')){
+    $current_user = pageProteger();
+}

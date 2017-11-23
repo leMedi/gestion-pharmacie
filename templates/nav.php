@@ -1,3 +1,4 @@
+<?php global $current_user; ?>
 <nav class="navbar navbar-default navbar-fixed">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -24,24 +25,18 @@
                 <?php endforeach; ?>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <p>
-                                <i class="fa fa-user"></i>
-                                Account
-                                <b class="caret"></b>
-                            </p>
-
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Something</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
+                <li >
+                    
+                    <a>
+                        <i class="fa fa-user"></i>
+                        <?= $current_user->nom; ?>
+                        
+                    </a>
+                    
                 </li>
                 <li>
-                    <a href="#">
-                        <p>Log out</p>
+                    <a href=<?= lien('/logout.php') ?>>
+                        <p>Deconexion</p>
                     </a>
                 </li>
                 <li class="separator hidden-lg"></li>
