@@ -16,7 +16,16 @@ require_once(__DIR__. '/../include/outils.php');
     </div> <!-- .sidebar -->
 
     <div class="main-panel">
-        <?php template('nav'); ?> 
+        <?php template('nav', array(
+            'title' => 'Medicaments',
+            'actions' => array(
+                array(
+                    'nom'   => 'Ajouter',
+                    'icon'  => 'fa fa-plus',
+                    'lien'  => '/medicaments/ajouter.php'
+                )
+            )
+        )); ?>
     
         <div class="content">
             <div class="container-fluid">
