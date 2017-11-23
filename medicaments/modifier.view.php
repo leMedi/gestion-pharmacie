@@ -42,7 +42,7 @@ function ancient($cle)
                     <div class="col-md-6">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">Ajouter un Medicament</h4>
+                                <h4 class="title">Modifier le Medicament</h4>
                             </div>
                             <div class="content">
                                 <form method="POST">
