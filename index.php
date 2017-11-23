@@ -40,8 +40,8 @@
                 <li class="active"><a href="#banner">Home</a></li>
                 <li class=""><a href="#service">Admin</a></li>
                 <li class=""><a href="#about">Employée</a></li>
-                
                 <li class=""><a href="#contact">Contact</a></li>
+                <li class=""><a href="login.php">Se Connecter</a></li>
               </ul>
             </div>
           </div>
@@ -153,7 +153,7 @@
           <div class="thumbnail">
             <img src="public/img/doctor2.jpg" alt="..." class="team-img">
             <div class="caption">
-              <h3>Iai Donas</h3>
+              <h3>Achraf Elyaacoubi</h3>
               <p>Doctor</p>
               <ul class="list-inline">
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -167,7 +167,7 @@
           <div class="thumbnail">
             <img src="public/img/doctor3.jpg" alt="..." class="team-img">
             <div class="caption">
-              <h3>Amanda Denyl</h3>
+              <h3>Bahaa Elbaghzaoui</h3>
               <p>Doctor</p>
               <ul class="list-inline">
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -181,7 +181,7 @@
           <div class="thumbnail">
             <img src="public/img/doctor4.jpg" alt="..." class="team-img">
             <div class="caption">
-              <h3>Jason Davis</h3>
+              <h3>Mehdi ELhaij</h3>
               <p>Doctor</p>
               <ul class="list-inline">
                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
