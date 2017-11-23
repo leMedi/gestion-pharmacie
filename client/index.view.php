@@ -53,7 +53,7 @@
                             <div class="card">
                                 <div class="header">
                                     <h4 class="title"><?= $_GET['q'] ?></h4>
-                                    <p class="category">Resulta de recherche</p>
+                                    <p class="category">Resultat de recherche</p>
                                 </div>
                                 <div class="content">
                                     <div class="alert alert-danger" role="alert">
@@ -71,7 +71,7 @@
                         elseif(count($clients) != 0):
                             template('clients.table', array(
                                 'title'         => 'Les clients',
-                                'subtitle'      => 'Tous les clients disponible dans le stock',
+                                'subtitle'      => '',
                                 'clients'   => $clients
                             ));
                         endif;
