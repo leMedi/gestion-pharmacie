@@ -2,6 +2,7 @@
 session_start();
 session_regenerate_id();
 
+init_session();
 
 require_once('config.php');
 require_once('basedonner.php');
@@ -56,5 +57,30 @@ function select($param, $str, $default = false)
         return 'selected';
     return '';
 }
+
+function init_session()
+{
+    if(!isset($_SESSION['medicaments'])){
+        $_SESSION['medicaments'] = array();
+    }
+    if(!isset($_SESSION['client'])){
+        $_SESSION['client'] = -1;
+    }
+    
+}
+
+function medicamentsSession()
+{
+    $medicaments = array();
+    foreach ($_SESSION['medicaments'] as $id) {
+        $medicament = new Medicaments();
+        $medicament = $medicament->trouver('id', $id);
+        if($medicament)
+            $medicaments[] = $medicament;
+    }
+    return $medicaments;
+}
+
+
 
 
