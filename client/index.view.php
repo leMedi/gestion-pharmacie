@@ -71,7 +71,7 @@
                         elseif(count($clients) != 0):
                             template('clients.table', array(
                                 'title'         => 'Les clients',
-                                'subtitle'      => 'Tous les clients disponible dans le stock',
+                                'subtitle'      => '',
                                 'clients'   => $clients
                             ));
                         endif;
