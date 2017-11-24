@@ -53,7 +53,7 @@ function ancient($cle)
                                       <div class="col-md-12">
                                           <div class="form-group">
                                               <label>Nom</label>
-                                               <input type="text" class="form-control" name="<?= ancient('nom') ?>" value="<?= ancient('nom')?>" >
+                                               <input type="text" class="form-control" name="client[nom]" value="<?= ancient('nom')?>" >
                                           </div>
                                       </div>
                                    </div>
@@ -61,7 +61,7 @@ function ancient($cle)
                                       <div class="col-md-12">
                                           <div class="form-group">
                                               <label>Prenom</label>
-                                               <input type="text" class="form-control" name="<?= ancient('prenom') ?>" value="<?= ancient('prenom') ?>" >
+                                               <input type="text" class="form-control" name="client[prenom]" value="<?= ancient('prenom') ?>" >
                                           </div>
                                       </div>
                                   </div>
@@ -70,7 +70,7 @@ function ancient($cle)
                                        <div class="col-md-12">
                                            <div class="form-group">
                                                <label>Tel</label>
-                                               <input type="text" class="form-control" name="<?= ancient('tel') ?>" value="<?= ancient('tel') ?>" >
+                                               <input type="text" class="form-control" name="client[tel]" value="<?= ancient('tel') ?>" >
                                            </div>
                                        </div>
                                    </div>
@@ -78,7 +78,7 @@ function ancient($cle)
                                       <div class="col-md-12">
                                           <div class="form-group">
                                               <label>Montant Restant à payer</label>
-                                              <input type="text" class="form-control" name="<?= ancient('montant_restant') ?>" value="<?= ancient('montant_restant') ?>" >
+                                              <input type="text" class="form-control" name="client[montant_restant]" value="<?= ancient('montant_restant') ?>" >
                                           </div>
                                       </div>
                                   </div>

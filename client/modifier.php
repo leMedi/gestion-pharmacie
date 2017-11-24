@@ -14,8 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["client"])) {
 
     $result = $client->enregistrer();
 
-    // dd($result);
-
     if($result === true)
         header('Location:info.php?id=' . $client->id);
     else
