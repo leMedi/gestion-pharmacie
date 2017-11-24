@@ -27,6 +27,15 @@ class Medicaments extends basedonner
     public function position() {
         return $this->aille . '-' . $this->col . '-' . $this->etage;
     }
+
+    public static function miseJourQte($id, $qte) {
+        $db = new PDO('mysql:host=' . db_host . ';dbname=' . db_name, db_user, db_pass);
+        $stmt = $db->prepare('UPDATE medicaments SET qte = qte - :qte WHERE id = :id');
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':qte', $qte);
+
+        return $stmt->execute();
+    }
 }
 
 /**

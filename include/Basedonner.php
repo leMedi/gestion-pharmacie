@@ -79,8 +79,12 @@ class BaseDonner
 
     public function sql($sql, $data)
     {
-        $stmt = $this->db->exec($sql);
-        return $stmt->execute($data);
+        $stmt = $this->db->prepare($sql);
+        if($stmt->execute($data))
+            return $stmt->fetchObject();
+        else
+            return false;
+
     }
 
     public function ajouter($donner)
