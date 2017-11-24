@@ -41,7 +41,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         case 'update_debt':
             $_SESSION['medicaments'] = array();
             $_SESSION['client'] = -1;
-            
+            unset($_SESSION['medicaments']);
+            unset($_SESSION['client']);
+            Clients::miseJourCredit($_POST['id'], $_POST['credit']);
+
+
+            // die('ok');
+            break;
+        case 'clear':
+            $_SESSION['medicaments'] = array();
+            $_SESSION['client'] = -1;
+            unset($_SESSION['medicaments']);
+            unset($_SESSION['client']);
             Clients::miseJourCredit($_POST['id'], $_POST['credit']);
 
 
@@ -50,6 +61,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         default:
             header('Location:' . site . '/backoffice.php');
     }
+}else if($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['clear'])) {
+    $_SESSION['medicaments'] = array();
+    $_SESSION['client'] = -1;
+    unset($_SESSION['medicaments']);
+    unset($_SESSION['client']);
+    header('Location:' . site . '/achat/index.php');
 }
 else
     header('Location:' . site . '/backoffice.php');

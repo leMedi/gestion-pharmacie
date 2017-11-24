@@ -13,7 +13,14 @@
 
     <div class="main-panel">
         <?php template('nav', array(
-            'title' => 'Achat'
+            'title' => 'Achat',
+            'actions' => array(
+                array(
+                    'nom'   => 'Effacer',
+                    'icon'  => 'fa fa-trash',
+                    'lien'  => '/achat/handler.php?clear=yes'
+                )
+            )
         )); ?> 
     
         <div class="content">
