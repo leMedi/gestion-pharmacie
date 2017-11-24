@@ -36,6 +36,25 @@ class Medicaments extends basedonner
 
         return $stmt->execute();
     }
+
+    public function qteCritique()
+    {
+        $stmt = $this->db->prepare("SELECT * FROM $this->table WHERE qte < 11");
+
+        $stmt->execute();
+        
+        $resultat = $stmt->fetchAll();
+        
+        $resultat_obj = array();
+        foreach ($resultat as $line) {
+            $p = new static();
+            $p->remplire_PDO($line);
+            $resultat_obj[] = $p;
+        }
+
+        return $resultat_obj;
+
+    }
 }
 
 /**
