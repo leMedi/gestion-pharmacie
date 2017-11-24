@@ -56,6 +56,15 @@ class Clients extends basedonner
         }
 
     }
+
+    public static function miseJourCredit($id, $credit) {
+        $db = new PDO('mysql:host=' . db_host . ';dbname=' . db_name, db_user, db_pass);
+        $stmt = $db->prepare('UPDATE clients SET montant_restant = montant_restant + :credit WHERE id = :id');
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':credit', $credit);
+
+        return $stmt->execute();
+    }
 }
 
 /**
