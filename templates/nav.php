@@ -29,7 +29,7 @@
                     
                     <a>
                         <i class="fa fa-user"></i>
-                        <?= $current_user->nom; ?>
+                        <?= $current_user->prenom . ' ' . $current_user->nom ?>
                         
                     </a>
                     
