@@ -13,12 +13,13 @@
     <div class="row">
         <div class="col-sm-6">
             <?php
+                $client = false;
                 if($_SESSION['client'] > -1) :
                     $client = new Clients();
                     $client = $client->trouver('id', $_SESSION['client']);
                     if($client !== false) :
             ?>
-                        <h3><b>Client:</b> <?= $client->nom . ' ' . $client->prenom ?></h3>
+                        <h3 id="client" data-id="<?= $client->id ?>"><b>Client:</b> <?= $client->nom . ' ' . $client->prenom ?></h3>
                         <p class="my-0"><?= $client->adresse ?></p>
             <?php
                     endif;
@@ -48,7 +49,7 @@
                     foreach($medicaments as $medicament): 
                         $total += $medicament->prix_vente;
                 ?>
-                <tr data-prix="<?= $medicament->prix_vente ?>">
+                <tr class="item" data-id="<?= $medicament->id ?>" data-prix="<?= $medicament->prix_vente ?>">
                     <td><?= $conteur++; ?></td>
                     <td><a href="<?= lien('/medicaments/info.php?id=' . $medicament->id) ?>"><?= $medicament->ref ?></a></td>
                     <td><a href="<?= lien('/medicaments/info.php?id=' . $medicament->id) ?>"><?= $medicament->nom ?></a></td>
@@ -83,9 +84,20 @@
         </table>
     </div>
     <div class="row">
-        <div class="col-sm-push-6 col-sm-6 text-right">
-            <input id="rest" type="number" value="0">
-            <button class="btn btn-success">Facturer</button>
+        <div class="col-sm-push-6 col-sm-6">
+            <?php
+                if($client !== false) :
+            ?>
+            <!-- <form id="form-facturer" class="form-inline"> -->
+                <div class="form-group" style="width: calc(100% - 101px); display: inline-block;">
+                    <label>Le montant payer</label>
+                    <input id="payer" type="number" class="form-control">
+                </div>
+                <button id="facturer" type="submit" class="btn btn-success">Facturer</button>
+            <!-- </form> -->
+            <?php
+                endif;
+            ?>
         </div>
     </div>
 </div>

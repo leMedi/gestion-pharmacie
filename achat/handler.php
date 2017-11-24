@@ -33,6 +33,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
             $_SESSION['client'] = -1;  
             header('Location:' . site . '/client/');
             break;
+        case 'update_stock':
+            // dd($_POST);
+            Medicaments::miseJourQte($_POST['id'], $_POST['qte']);
+            die('ok');
+            break;
+        case 'update_debt':
+            $_SESSION['medicaments'] = array();
+            $_SESSION['client'] = -1;
+            
+            Clients::miseJourCredit($_POST['id'], $_POST['credit']);
+
+
+            // die('ok');
+            break;
         default:
             header('Location:' . site . '/backoffice.php');
     }

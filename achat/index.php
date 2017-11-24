@@ -43,6 +43,8 @@
 
 <script>
     var $total = $('#total');
+    var $totalPayer = $('#payer');
+    var $client = $('#client');
     $(".input-qte").on('change, mouseup, keyup', function(e) {
         var total = 0;
 
@@ -56,5 +58,42 @@
         }, this);
 
         $total.html(total);
+    });
+
+    $("#facturer").click(function(e){
+        e.preventDefault();
+        var total = 0;
+        $(".item").each(function(){
+            var $this = $(this),
+                id    = $this.data('id'),
+                prix  = $this.data('prix'),
+                qte   = $this.find('.input-qte').val();
+
+            total += prix*qte;
+            $.post('<?= lien('/achat/handler.php') ?>',
+            {
+                action: 'update_stock',
+                id: id,
+                qte: qte   
+            })
+            .done(function (data) {
+                console.log(data);
+            });
+        });
+
+        var credit = total - $totalPayer.val(); 
+        $.post('<?= lien('/achat/handler.php') ?>',
+        {
+            action: 'update_debt',
+            id: $client.data('id'),
+            credit: credit   
+        })
+        .done(function (data) {
+            console.log(data);
+            location.reload();
+        });
+
+        // location.reload();
+        // return false;
     })
 </script>
