@@ -1,3 +1,5 @@
+<?php global $current_user; ?>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-6">
@@ -27,7 +29,7 @@
                 ?>
         </div>
         <div class="col-sm-6 text-right">
-            <h3><b>Employee</b><br> Mehdi Elhaij</h3>
+            <h3><b>Employee</b><br> <?= $current_user->prenom . ' ' . $current_user->nom ?></h3>
             <p class="my-0"></p>
         </div>
     </div>
