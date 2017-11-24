@@ -1,7 +1,7 @@
 <?php global $current_user; ?>
 <div class="sidebar-wrapper">
     <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text">
+        <a href="<?= lien('/') ?>" class="simple-text">
             Pharmacie GI
         </a>
     </div>
