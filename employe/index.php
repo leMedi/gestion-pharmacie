@@ -63,14 +63,14 @@ $employers = $employers->tous();
                                        // dd($employers);
                                     foreach($employers as $e): ?>
                                        <tr>
-                                        <td><?= $e->id?></td>
-                                        <td><?= $e->nom ?></td>
-                                        <td><?= $e->prenom ?></td>
-                                        <td><?= $e->tel ?></td>
-                                        <td><?= $e->address ?></td>
-                                        <td><?= $e->email ?></td>
-                                        <td><?= $e->salaire ?></td>
-                                        <td><?= $e->admin ?></td>
+                                        <td><a href="<?= lien('/employe/info.php?id=' . $e->id) ?>"><?= $e->id?></a></td>
+                                        <td><a href="<?= lien('/employe/info.php?id=' . $e->id) ?>"><?= $e->nom ?></a></td>
+                                        <td><a href="<?= lien('/employe/info.php?id=' . $e->id) ?>"><?= $e->prenom ?></a></td>
+                                        <td><a href="<?= lien('/employe/info.php?id=' . $e->id) ?>"><?= $e->tel ?></a></td>
+                                        <td><a href="<?= lien('/employe/info.php?id=' . $e->id) ?>"><?= $e->address ?></a></td>
+                                        <td><a href="<?= lien('/employe/info.php?id=' . $e->id) ?>"><?= $e->email ?></a></td>
+                                        <td><a href="<?= lien('/employe/info.php?id=' . $e->id) ?>"><?= $e->salaire ?></a></td>
+                                        <td><a href="<?= lien('/employe/info.php?id=' . $e->id) ?>"><?= $e->admin ?></a></td>
                                         <td><a class='btn btn-info btn-xs' href="<?= lien('/employe/modifier.php?id=' . $e->id) ?>"><span class="pe-7s-edit"></span>Modifier</a>
                                          <a href="<?= lien('/employe/supprimer.php?id=' . $e->id) ?>" class="btn btn-danger btn-xs"><span class="pe-7s-delete-user"></span>Supprimer</a></td>
                                        </tr>
