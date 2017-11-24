@@ -5,7 +5,7 @@
         
     </div>
     <div class="content">
-        <h1><?= $stats ?></h1>
+        <h1 class="my-0"><?= $stats ?></h1>
         <div class="footer">
         </div>
     </div>
