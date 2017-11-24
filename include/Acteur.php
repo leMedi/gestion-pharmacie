@@ -84,6 +84,25 @@ class Clients extends basedonner
 
         return $stmt->execute();
     }
+
+    public function avecCredit()
+    {
+        $stmt = $this->db->prepare("SELECT * FROM $this->table WHERE montant_restant > 0");
+
+        $stmt->execute();
+        
+        $resultat = $stmt->fetchAll();
+        
+        $resultat_obj = array();
+        foreach ($resultat as $line) {
+            $p = new static();
+            $p->remplire_PDO($line);
+            $resultat_obj[] = $p;
+        }
+
+        return $resultat_obj;
+
+    }
 }
 
 /**
